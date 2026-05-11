@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MOB</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: transparent;
+    overflow: hidden;
+    font-family: 'VT323', 'Courier New', monospace;
+    user-select: none;
+  }
+  #panel {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    width: 220px;
+    background: rgba(20, 12, 6, 0.92);
+    border: 1px solid #3d2b1f;
+    border-radius: 4px;
+    color: #e8d8b8;
+    font-size: 14px;
+    padding: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.7);
+  }
+  .title {
+    color: #c0392b;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #3d2b1f;
+    padding-bottom: 6px;
+  }
+  .row {
+    display: flex;
+    justify-content: space-between;
+    margin: 3px 0;
+    font-size: 13px;
+  }
+  .label { color: #9a7a60; }
+  .val { color: #e8d8b8; max-width: 130px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .status { color: #c8943a; }
+  .btns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    margin-top: 10px;
+  }
+  button {
+    background: #3d2b1f;
+    border: 1px solid #9a7a60;
+    color: #e8d8b8;
+    font-family: inherit;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    padding: 5px 4px;
+    cursor: pointer;
+    border-radius: 2px;
+  }
+  button:hover { background: #5a3d2a; border-color: #c8943a; color: #fff; }
+  button:active { background: #7a4d2f; }
+  #btn-kill {
+    grid-column: span 2;
+    background: #4a1010;
+    border-color: #c0392b;
+    color: #ff8080;
+  }
+  #btn-kill:hover { background: #6a1818; }
+  .board-vis {
+    margin-top: 8px;
+    width: 100%;
+    height: 8px;
+    background: #1a1008;
+    border: 1px solid #3d2b1f;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+  #move-bar {
+    height: 100%;
+    width: 0%;
+    background: #c0392b;
+    transition: width 0.3s;
+  }
+</style>
+</head>
+<body>
+<div id="panel">
+  <div class="title">MOB v0.1 — CQ</div>
+  <div class="row"><span class="label">Status</span><span class="val status" id="status">Idle</span></div>
+  <div class="row"><span class="label">Board</span><span class="val" id="board-info">not set</span></div>
+  <div class="row"><span class="label">Moves</span><span class="val" id="move-count">0</span></div>
+  <div class="row"><span class="label">Last</span><span class="val" id="last-move">-</span></div>
+  <div class="board-vis"><div id="move-bar"></div></div>
+  <div class="btns">
+    <button id="btn-detect">Detect</button>
+    <button id="btn-start">Start</button>
+    <button id="btn-stop">Stop</button>
+    <button id="btn-kill">KILL</button>
+  </div>
+  <div style="margin-top:8px;font-size:11px;color:#4a3828;text-align:center;">
+    macOS: Screen Recording + Accessibility required
+  </div>
+</div>
+<script src="overlay.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "name": "mob",
+  "version": "0.1.0",
+  "description": "Multipurpose Overscreen Bot — Electron overlay + game-bot framework",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "rebuild": "electron-rebuild -f -w @jitsi/robotjs"
+  },
+  "dependencies": {
+    "@jitsi/robotjs": "^0.6.0",
+    "jimp": "^0.22.12"
+  },
+  "devDependencies": {
+    "electron": "^28.3.3",
+    "electron-rebuild": "^3.2.9"
+  }
+}
