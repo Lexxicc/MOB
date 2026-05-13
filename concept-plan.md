@@ -37,7 +37,7 @@ Building it against an owned target (Tacticon games) is risk-free practice. The 
 
 ## Build order
 
-1. **Scaffold** - `Ventures/MOB.Multipurpose-Overscreen-Bot/` skeleton, GitHub repo `Lexxicc/MOB`, README, package.json or Cargo.toml, license, .gitignore. Decide Electron vs Tauri vs Python.
+1. **Scaffold** - `Ventures/Multipurpose-Overscreen-Bot (MOB)/` skeleton, GitHub repo `Lexxicc/Multipurpose-Overscreen-Bot`, README, package.json or Cargo.toml, license, .gitignore. Decide Electron vs Tauri vs Python.
 2. **Overlay shell** - transparent always-on-top window, click-through everywhere except a small control panel (start / stop / kill).
 3. **Capture loop** - screen capture of the underlying game canvas (per-window if possible, full-screen with bounding-box fallback). Target 5-10 fps for turn-based, room to scale later.
 4. **Vision v1** - template matching against pre-captured game-state tiles. Sufficient for turn-based games with finite tile types.
