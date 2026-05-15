@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HT HUD</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: transparent;
+    overflow: hidden;
+    font-family: 'SF Mono', 'Menlo', 'Courier New', monospace;
+    user-select: none;
+  }
+  #panel {
+    position: fixed;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    background: rgba(8, 14, 24, 0.94);
+    border: 1px solid #1f4068;
+    border-radius: 6px;
+    color: #d8e4f0;
+    font-size: 12px;
+    padding: 10px 12px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.7);
+  }
+  .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #1f4068;
+    padding-bottom: 6px;
+  }
+  .title .name {
+    color: #4cc3ff;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+  }
+  .title .mode {
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: #1f4068;
+    color: #cfe4ff;
+  }
+  .title .mode.live  { background: #2d5a1f; color: #c8ffb0; }
+  .title .mode.paper { background: #5a3d1f; color: #ffd49a; }
+  .row {
+    display: flex;
+    justify-content: space-between;
+    margin: 4px 0;
+    font-size: 11.5px;
+  }
+  .label { color: #5e7a9a; }
+  .val   { color: #d8e4f0; max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .pnl-pos { color: #80ffa0; font-weight: bold; }
+  .pnl-neg { color: #ff8080; font-weight: bold; }
+  .pnl-zero { color: #d8e4f0; }
+  .pubkey { font-size: 10px; color: #5e7a9a; }
+  .cb-ok    { color: #80ffa0; }
+  .cb-open  { color: #ff8080; font-weight: bold; }
+  .recent-title {
+    color: #5e7a9a;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    margin: 8px 0 4px;
+    border-top: 1px solid #1f4068;
+    padding-top: 6px;
+  }
+  .trade {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: #b0c0d0;
+    margin: 2px 0;
+  }
+  .trade .buy  { color: #80ffa0; }
+  .trade .sell { color: #ff8080; }
+  .btns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-top: 10px;
+  }
+  button {
+    background: #1a2a40;
+    border: 1px solid #2c4d70;
+    color: #cfe4ff;
+    font-family: inherit;
+    font-size: 11px;
+    padding: 5px 4px;
+    cursor: pointer;
+    border-radius: 3px;
+    letter-spacing: 0.04em;
+  }
+  button:hover { background: #243b56; border-color: #4cc3ff; }
+  #btn-kill {
+    background: #3a0e0e;
+    border-color: #a02828;
+    color: #ff9a9a;
+    font-weight: bold;
+  }
+  #btn-kill:hover { background: #5a1818; }
+  #btn-close {
+    background: #1a2a40;
+  }
+  #conn {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    font-size: 9px;
+    color: #5e7a9a;
+    letter-spacing: 0.05em;
+  }
+  #conn.ok    { color: #80ffa0; }
+  #conn.bad   { color: #ff8080; }
+</style>
+</head>
+<body>
+<div id="panel">
+  <div class="title">
+    <span class="name">HT HUD</span>
+    <span id="mode" class="mode">--</span>
+  </div>
+  <div class="row"><span class="label">wallet</span><span class="val" id="wallet-sol">--</span></div>
+  <div class="row"><span class="val pubkey" id="wallet-pubkey">--</span></div>
+  <div class="row"><span class="label">cum PnL</span><span class="val pnl-zero" id="cum-pnl">$--</span></div>
+  <div class="row"><span class="label">trades</span><span class="val" id="trade-count">--</span></div>
+  <div class="row"><span class="label">daily loss</span><span class="val" id="daily-loss">-- SOL</span></div>
+  <div class="row"><span class="label">CB</span><span class="val cb-ok" id="cb">closed</span></div>
+  <div class="recent-title">RECENT TRADES</div>
+  <div id="recent-list"></div>
+  <div class="btns">
+    <button id="btn-close">CLOSE HUD</button>
+    <button id="btn-kill">KILL BOT</button>
+  </div>
+  <div id="conn">disconnected</div>
+</div>
+<script src="renderer.js"></script>
+</body>
+</html>

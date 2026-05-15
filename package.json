@@ -5,6 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
+    "start:hud": "electron apps/hash-trader-hud/main.js",
     "rebuild": "electron-rebuild -f -w @jitsi/robotjs"
   },
   "dependencies": {
